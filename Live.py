@@ -1,7 +1,8 @@
 import MemoryGame
 import GuessGame
 import CurrencyRoulette
-
+import Scores
+from Scores import add_score
 global koshi, choose
 
 
@@ -15,6 +16,7 @@ def welcome():
 
 
 def load_game():
+    global koshi, choose
     print('''Please choose a game to play:
 1. Memory Game - a sequence of numbers will appear for 1 second and you have to
 guess it back
@@ -34,9 +36,15 @@ guess it back
             continue
         if choose == 1:
             MemoryGame.play(koshi)
-
-        elif choose == 2:
+            if bool(MemoryGame) is True:
+                add_score(koshi=koshi)
+        if choose == 2:
             GuessGame.play(koshi)
-
-        elif choose == 3:
+            if bool(GuessGame) is True:
+                Scores.add_score(koshi=koshi)
+        if choose == 3:
             CurrencyRoulette.play(koshi)
+            if bool(CurrencyRoulette) is True:
+                Scores.add_score(koshi=koshi)
+
+    return koshi,choose

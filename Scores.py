@@ -1,12 +1,13 @@
-def add_score(difficulty):
-    POINTS_OF_WINNING = (difficulty * 3) + 5  # Calculating score
+from pathlib import Path
+
+
+def add_score(koshi):
+    POINT_OF_WINNING = str((koshi * 3)+ 5)
+
     try:
-        with open("Scores.txt", "r") as f:  # Read file "Scores"
-            score = int(f.readline())  # Read the first line of "Scores.txt"
-    except FileNotFoundError:  # if the file doesn't exist, create the file and set the score to 0
-        score = 0
-
-    score += POINTS_OF_WINNING  # adds the point of the current score
-
-    with open("Scores.txt", "w") as f:  # overwrite the score in the file
-        f.write(str(score))
+        score_file = open(Path('Scores.txt'),'r')
+        score = open(Path('Scores.txt'),'a')
+        score.write(f''',{POINT_OF_WINNING}''')
+    except FileNotFoundError:
+        score = open(Path('Scores.txt'),'x')
+        score.write(POINT_OF_WINNING)

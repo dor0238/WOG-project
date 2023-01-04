@@ -5,14 +5,14 @@ import os
 def generate_memory(koshi):
     import random
     print('Welcome to the memory game!')
-    time.sleep(4)
+    time.sleep(2)
     print('i will show you random numbers between 1 - 100, remeber them!')
-    time.sleep(3)
+    time.sleep(1.5)
     print('ready?')
     print('3')
-    time.sleep(2)
+    time.sleep(0.7)
     print('2')
-    time.sleep(2)
+    time.sleep(0.5)
     print('1.....')
     print('Good Luck')
     time.sleep(1)
@@ -32,15 +32,16 @@ def user_input(koshi):
     user_list = []
     print(f'Please enter {koshi} numbers: ')
     for i in range(koshi):
-        i = user_list.append(int(input('insert number : ')))
+       user_list.append(int(input('insert number : ')))
     return user_list
 
 
 def compare_list(random_num, user_list):
     while True:
         if random_num == user_list:
-            print('correct!')
-            break
+            print('youwin')
+            return True
+
         else:
             'failed!'
             return False
@@ -55,4 +56,5 @@ def play(koshi):
         return True
 
     else:
+        print('you lost')
         return False
